@@ -33,5 +33,5 @@ def install(env):
     """
 
     env['COMPONENTS'] = {}
-    env.AddMethod('Component', _component)
-    env.AddMethod('GetComponent', _get_component)
+    env.AddMethod(_component, 'Component')
+    env.AddMethod(_get_component, 'GetComponent')
