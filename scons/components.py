@@ -16,14 +16,18 @@ def _component(env, name, objects):
     env['COMPONENTS'][name] = objects
 
 
-def _get_component(env, name):
-    """Get the objects of the given component
+def _get_components(env, *args):
+    """Get the objects of the given component(s)
     
     :param env:     the SCons environment
-    :param name:    the name of the component
+    :param args:    the names of the components
     """
 
-    return env['COMPONENTS'][name]
+    objects = []
+    for name in args:
+        objects.append(env['COMPONENTS'][name])
+
+    return objects
 
 
 def install(env):
@@ -34,4 +38,4 @@ def install(env):
 
     env['COMPONENTS'] = {}
     env.AddMethod(_component, 'Component')
-    env.AddMethod(_get_component, 'GetComponent')
+    env.AddMethod(_get_components, 'GetComponents')
