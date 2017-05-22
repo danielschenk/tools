@@ -26,11 +26,11 @@ def _get_components(env, *args):
     """
 
     variant_dir = env['COMPONENTS_VARIANT_DIR']
-    objects = []
+    objects = set()
     for name in args:
-        objects.append(env['COMPONENTS'][variant_dir][name])
+        [objects.add(obj) for obj in env['COMPONENTS'][variant_dir][name]]
 
-    return objects
+    return list(objects)
 
 
 def install(env):
